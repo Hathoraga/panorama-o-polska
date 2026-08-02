@@ -8,16 +8,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-page="index">
 
 <header>
-  <div class="brand">
+  <a class="brand" href="index.html" aria-label="Strona główna">
     <img class="emblem" src="images/logo.jpg" alt="Panorama O! Polska">
     <div class="divider"></div>
     <div class="brand-name">Ministerstwo<br>Podróży</div>
-  </div>
-  <div class="burger"><span></span><span></span><span></span></div>
+  </a>
+  <button class="burger" id="menuToggle" aria-label="Otwórz menu"><span></span><span></span><span></span></button>
 </header>
+
+<nav class="quick-tabs">
+  <a href="index.html" data-page="index">Strona główna</a>
+  <a href="zamki.html" data-page="zamki">Zamki</a>
+  <a href="palace.html" data-page="palace">Pałace i dwory</a>
+  <a href="twierdze.html" data-page="twierdze">Twierdze i podziemia</a>
+  <a href="atrakcje.html" data-page="atrakcje">Atrakcje</a>
+  <a href="wiesci.html" data-page="wiesci">Zamkowe wieści</a>
+  <a href="kontakt.html" data-page="kontakt">Kontakt</a>
+</nav>
+
+<nav class="side-panel" id="sidePanel" aria-label="Menu główne">
+  <div class="side-panel-header">
+    <span class="side-panel-title">Spis komnat</span>
+    <button class="side-panel-close" id="panelClose" aria-label="Zamknij menu">✕</button>
+  </div>
+  <a href="index.html" data-page="index">Strona główna</a>
+  <a href="zamki.html" data-page="zamki">Zamki</a>
+  <a href="palace.html" data-page="palace">Pałace i dwory</a>
+  <a href="twierdze.html" data-page="twierdze">Twierdze i podziemia</a>
+  <a href="atrakcje.html" data-page="atrakcje">Atrakcje</a>
+  <a href="wiesci.html" data-page="wiesci">Zamkowe wieści</a>
+  <a href="kontakt.html" data-page="kontakt">Kontakt</a>
+</nav>
+<div class="panel-overlay" id="panelOverlay"></div>
 
 <section class="hero">
   <h1>Za bramą czeka<br>przygoda</h1>
@@ -105,11 +130,11 @@
 <section class="map-section">
   <div class="eyebrow">Plan majątku</div>
   <h2>Mapa podróży</h2>
-  <p>Wszystkie odwiedzone miejsca zaznaczone na jednej mapie — kliknij pinezkę, aby zobaczyć szczegóły.</p>
-  <div class="map-frame">
+  <p>Wszystkie odwiedzone miejsca zaznaczone na jednej mapie — otwórz ją, aby zobaczyć szczegóły.</p>
+  <a class="map-frame" href="https://goo.gl/maps/1J1qScRf6H69Nwqu6?g_st=ac" target="_blank" rel="noopener">
     <div class="map-toolbar">
       <span>⇱</span>
-      <span style="font-weight:600;">Zamki, pałace …</span>
+      <span style="font-weight:600;">Zamki, pałace i dwory</span>
       <span style="margin-left:auto;">⤢</span>
     </div>
     <div class="map-canvas">
@@ -119,7 +144,8 @@
       <div class="pin" style="top:38%; left:70%;"></div>
       <div class="pin" style="top:70%; left:24%;"></div>
     </div>
-  </div>
+  </a>
+  <div class="map-open-note">Otwórz w Google Maps →</div>
 </section>
 
 <footer>
@@ -211,5 +237,6 @@ document.querySelectorAll('.room-card .panel.photo').forEach(panel => {
 });
 </script>
 
+<script src="nav.js"></script>
 </body>
 </html>

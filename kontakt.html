@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt — Ministerstwo Podróży</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="kontakt">
+
+<header>
+  <a class="brand" href="index.html" aria-label="Strona główna">
+    <img class="emblem" src="images/logo.jpg" alt="Panorama O! Polska">
+    <div class="divider"></div>
+    <div class="brand-name">Ministerstwo<br>Podróży</div>
+  </a>
+  <button class="burger" id="menuToggle" aria-label="Otwórz menu"><span></span><span></span><span></span></button>
+</header>
+
+<nav class="quick-tabs">
+  <a href="index.html" data-page="index">Strona główna</a>
+  <a href="zamki.html" data-page="zamki">Zamki</a>
+  <a href="palace.html" data-page="palace">Pałace i dwory</a>
+  <a href="twierdze.html" data-page="twierdze">Twierdze i podziemia</a>
+  <a href="atrakcje.html" data-page="atrakcje">Atrakcje</a>
+  <a href="wiesci.html" data-page="wiesci">Zamkowe wieści</a>
+  <a href="kontakt.html" data-page="kontakt">Kontakt</a>
+</nav>
+
+<nav class="side-panel" id="sidePanel" aria-label="Menu główne">
+  <div class="side-panel-header">
+    <span class="side-panel-title">Spis komnat</span>
+    <button class="side-panel-close" id="panelClose" aria-label="Zamknij menu">✕</button>
+  </div>
+  <a href="index.html" data-page="index">Strona główna</a>
+  <a href="zamki.html" data-page="zamki">Zamki</a>
+  <a href="palace.html" data-page="palace">Pałace i dwory</a>
+  <a href="twierdze.html" data-page="twierdze">Twierdze i podziemia</a>
+  <a href="atrakcje.html" data-page="atrakcje">Atrakcje</a>
+  <a href="wiesci.html" data-page="wiesci">Zamkowe wieści</a>
+  <a href="kontakt.html" data-page="kontakt">Kontakt</a>
+</nav>
+<div class="panel-overlay" id="panelOverlay"></div>
+
+<section class="page-hero">
+  <a class="breadcrumb" href="index.html">← Ministerstwo Podróży</a>
+  <h1>Kontakt</h1>
+  <p>Ministerstwo Podróży to nie urząd, a wspólna kronika — zamki, pałace, twierdze i atrakcje, które razem odkrywamy i opisujemy. Masz zdjęcie warte dodania, poprawkę do wpisu, pomysł na „Zamkowe wieści" albo propozycję współpracy?<br><br>Napisz — każda wiadomość trafia prosto do kancelarii.</p>
+</section>
+
+<div class="voivo-intro">
+  <div class="eyebrow">KONTAKT</div>
+  <h2>Wybierz, w jakiej sprawie piszesz</h2>
+</div>
+
+<section class="contact-grid">
+
+  <article class="contact-card">
+    <div class="contact-icon">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#c8a35a" stroke-width="5"><rect x="14" y="46" width="14" height="40"/><rect x="34" y="30" width="14" height="56"/><rect x="54" y="46" width="12" height="40"/><rect x="72" y="40" width="14" height="46"/></g></svg>
+    </div>
+    <h3>Zgłoś obiekt lub zdjęcie</h3>
+    <p>Znasz zamek, pałac, twierdzę albo inne miejsce, którego jeszcze nie ma w naszej galerii? A może masz własne zdjęcie do dodania w istniejącej komnacie? Napisz nazwę miejscowości, województwo i prześlij fotografię.</p>
+    <a class="contact-link" href="mailto:zgloszenia@ministerstwopodrozy.pl">zgloszenia@ministerstwopodrozy.pl</a>
+  </article>
+
+  <article class="contact-card">
+    <div class="contact-icon">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#c8a35a" stroke-width="5"><rect x="16" y="22" width="68" height="56"/><line x1="28" y1="38" x2="72" y2="38"/><line x1="28" y1="50" x2="72" y2="50"/><line x1="28" y1="62" x2="54" y2="62"/></g></svg>
+    </div>
+    <h3>Zamkowe wieści</h3>
+    <p>Piszesz artykuł, organizujesz wydarzenie w zabytkowej rezydencji, wydajesz książkę lub kręcisz film w plenerach polskiego zamku? Podeślij informację, a chętnie opublikujemy ją w komnacie „Zamkowe wieści".</p>
+    <a class="contact-link" href="mailto:wiesci@ministerstwopodrozy.pl">wiesci@ministerstwopodrozy.pl</a>
+  </article>
+
+  <article class="contact-card">
+    <div class="contact-icon">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon fill="none" stroke="#c8a35a" stroke-width="5" points="50,10 61,38 91,38 67,57 76,86 50,68 24,86 33,57 9,38 39,38"/></svg>
+    </div>
+    <h3>Współpraca i media</h3>
+    <p>Reprezentujesz muzeum, zamek, wydawnictwo lub markę i chcesz zaproponować współpracę, patronat albo wywiad? Tutaj trafisz do właściwej kancelarii.</p>
+    <a class="contact-link" href="mailto:wspolpraca@ministerstwopodrozy.pl">wspolpraca@ministerstwopodrozy.pl</a>
+  </article>
+
+  <article class="contact-card">
+    <div class="contact-icon">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#c8a35a" stroke-width="5"><path d="M50 12 C34 12 26 28 26 44 C26 64 38 72 38 84 L62 84 C62 72 74 64 74 44 C74 28 66 12 50 12 Z"/></g></svg>
+    </div>
+    <h3>Pytania ogólne</h3>
+    <p>Coś nie działa, znalazłeś błąd na stronie albo po prostu chcesz się przywitać? Śmiało — każda wiadomość trafia do tej samej kancelarii.</p>
+    <a class="contact-link" href="mailto:kontakt@ministerstwopodrozy.pl">kontakt@ministerstwopodrozy.pl</a>
+  </article>
+
+</section>
+
+<section class="map-section" style="padding-top:0;">
+  <div class="eyebrow">O projekcie</div>
+  <h2>Kronika pisana wspólnie</h2>
+  <p>Panorama O! Polska powstaje jako otwarta kolekcja — każda komnata (Zamki, Pałace i dwory, Twierdze i podziemia, Atrakcje) rośnie dzięki zdjęciom i wskazówkom od podróżników takich jak Ty. Im więcej głosów, tym pełniejsza mapa.</p>
+</section>
+
+<footer>
+  <img src="images/logo.jpg" alt="Panorama O! Polska" loading="lazy" style="width:200px; margin:0 auto 18px; opacity:.9;">
+  <span class="foot-mark">Panorama O! Polska</span>
+  Ministerstwo Podróży · Wszelkie prawa zastrzeżone
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>
