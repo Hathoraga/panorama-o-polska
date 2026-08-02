@@ -46,6 +46,8 @@ const PLACES = [
     thumb: "images/zamek-lancut-thumb.jpg", full: "images/zamek-lancut.jpg" },
   { category: "palace", voivodeship: "Łódzkie", town: "Piorunów", name: "Hotel SPA***, restauracja, basen",
   thumb: "images/palace-piorunow-thumb.jpg", full: "images/palace-piorunow.jpg" },
+  { category: "twierdze", voivodeship: "Małopolskie", town: "Kraków", name: "Kopiec Krakusa, muzeum",
+  thumb: "images/twierdze-krakow-thumb.jpg", full: "images/twierdze-krakow.jpg" },
   
   // Kolejne wpisy dopisuj poniżej, np.:
   // { category: "palace", voivodeship: "Mazowieckie", town: "Nieborów", name: "Pałac w Nieborowie",
