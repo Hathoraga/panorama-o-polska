@@ -43,7 +43,7 @@ const CATEGORY_LABELS = {
 
 const PLACES = [
   { category: "zamki", voivodeship: "Podkarpackie", town: "Łańcut", name: "Muzeum, hotel, restauracja, park",
-    thumb: "images/zamek-lancut-thumb.jpg", full: "images/zamek-lancut.jpg" },
+    thumb: "images/zamek-lancut-thumb.jpg", full: "images/zamek-lancut.jpg" }
   
   // Kolejne wpisy dopisuj poniżej, np.:
   // { category: "palace", voivodeship: "Mazowieckie", town: "Nieborów", name: "Pałac w Nieborowie",
