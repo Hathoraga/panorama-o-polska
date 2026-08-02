@@ -42,11 +42,9 @@ const CATEGORY_LABELS = {
 };
 
 const PLACES = [
-  { category: "zamki", voivodeship: "Podkarpackie", town: "Łańcut", name: "Zamek w Łańcucie",
+  { category: "zamki", voivodeship: "Podkarpackie", town: "Łańcut", name: "Muzeum, hotel, restauracja, park",
     thumb: "images/zamek-lancut-thumb.jpg", full: "images/zamek-lancut.jpg" },
-  { category: "palace", voivodeship: "Opolskie", town: "Komorno", name: "dwór - hotel ***",
-  thumb: "images/palace-komorno-thumb.jpg", full: "images/palace-komorno.jpg" },
-
+  
   // Kolejne wpisy dopisuj poniżej, np.:
   // { category: "palace", voivodeship: "Mazowieckie", town: "Nieborów", name: "Pałac w Nieborowie",
   //   thumb: "images/nieborow-thumb.jpg", full: "images/nieborow.jpg" },
