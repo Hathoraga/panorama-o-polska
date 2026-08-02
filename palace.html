@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pałace i dwory — Ministerstwo Podróży</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <img class="emblem" src="images/logo.jpg" alt="Panorama O! Polska">
+    <div class="divider"></div>
+    <div class="brand-name">Ministerstwo<br>Podróży</div>
+  </div>
+  <div class="burger"><span></span><span></span><span></span></div>
+</header>
+
+<section class="page-hero">
+  <a class="breadcrumb" href="index.html">← Ministerstwo Podróży</a>
+  <h1>Pałace i dwory</h1>
+  <p>Witaj w galerii polskich pałaców i dworów. Od barokowych rezydencji magnackich, przez klasycystyczne dwory ziemiańskie, po secesyjne wille – odkryj elegancję i historię zapisaną w złoconych salonach.<br><br>Zajrzyj do wnętrz, w których gościły najznamienitsze rody.</p>
+</section>
+
+<!-- WIDOK 1: lista województw -->
+<div class="voivo-intro" id="listIntro">
+  <div class="eyebrow">PAŁACE</div>
+  <h2>Odwiedź fascynujące komnaty pełne zadziwiających opowieści</h2>
+</div>
+
+<section class="voivo-grid" id="voivoGrid"></section>
+
+<!-- WIDOK 2: obiekty w wybranym województwie -->
+<section id="detailView" class="detail-view" hidden>
+  <div class="voivo-intro" style="padding-top:20px;">
+    <a class="breadcrumb" href="#" id="backLink">← Wszystkie województwa</a>
+    <div class="eyebrow">PAŁACE</div>
+    <h2 id="detailTitle">Województwo</h2>
+  </div>
+  <section class="voivo-grid" id="detailGrid"></section>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">✕</button>
+  <button class="lb-prev" id="lbPrev">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-next" id="lbNext">›</button>
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
+<footer>
+  <img src="images/logo.jpg" alt="Panorama O! Polska" loading="lazy" style="width:200px; margin:0 auto 18px; opacity:.9;">
+  <span class="foot-mark">Panorama O! Polska</span>
+  Ministerstwo Podróży · Wszelkie prawa zastrzeżone
+</footer>
+
+<script>
+/*
+  JAK DODAĆ KOLEJNY PAŁAC / DWÓR:
+  1. Wrzuć zdjęcie do images/ — najlepiej dwie wersje: miniaturę (~600px
+     szer.) i pełny rozmiar (~1920px szer.), format WebP lub JPG jakość ~80.
+  2. Znajdź właściwe województwo w obiekcie `palacesByVoivodeship` poniżej
+     i dopisz do jego tablicy nowy wpis:
+     { town: "Nazwa miejscowości", name: "Nazwa pałacu/dworu",
+       thumb: "images/plik-thumb.jpg", full: "images/plik.jpg" }
+  3. Obiekty w każdym województwie sortują się automatycznie alfabetycznie
+     po nazwie miejscowości — kolejność w tablicy nie ma znaczenia.
+  4. Liczba obiektów w województwie jest dowolna — od zera w górę.
+*/
+const palacesByVoivodeship = {
+  "Dolnośląskie": [],
+  "Kujawsko-pomorskie": [],
+  "Lubelskie": [],
+  "Lubuskie": [],
+  "Łódzkie": [],
+  "Małopolskie": [],
+  "Mazowieckie": [],
+  "Opolskie": [],
+  "Podkarpackie": [],
+  "Podlaskie": [],
+  "Pomorskie": [],
+  "Śląskie": [],
+  "Świętokrzyskie": [],
+  "Warmińsko-mazurskie": [],
+  "Wielkopolskie": [],
+  "Zachodniopomorskie": []
+};
+
+const palaceIcon = `<svg class="voivo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="#c8a35a"><polygon points="10,60 50,20 90,60 90,86 10,86"/><circle cx="50" cy="38" r="6" fill="#4a1620"/></g></svg>`;
+
+const voivoGrid   = document.getElementById('voivoGrid');
+const listIntro   = document.getElementById('listIntro');
+const detailView  = document.getElementById('detailView');
+const detailGrid  = document.getElementById('detailGrid');
+const detailTitle = document.getElementById('detailTitle');
+const backLink    = document.getElementById('backLink');
+
+// ---- WIDOK 1: kafelki województw ----
+function renderVoivoList(){
+  voivoGrid.innerHTML = '';
+  Object.keys(palacesByVoivodeship).forEach(name => {
+    const list = palacesByVoivodeship[name];
+    const el = document.createElement('div');
+    if (list.length > 0) {
+      el.className = 'voivo-tile';
+      el.innerHTML = `
+        <img src="${list[0].thumb}" alt="${name}" loading="lazy">
+        <div class="voivo-label">
+          <div class="voivo-name">${name}</div>
+          <div class="voivo-cap">${list.length} ${objectWord(list.length)}</div>
+        </div>`;
+    } else {
+      el.className = 'voivo-tile empty';
+      el.innerHTML = `
+        ${palaceIcon}
+        <div class="voivo-label">
+          <div class="voivo-name">${name}</div>
+        </div>`;
+    }
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => showDetail(name));
+    voivoGrid.appendChild(el);
+  });
+}
+
+function objectWord(n){
+  if (n === 1) return 'obiekt';
+  if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) return 'obiekty';
+  return 'obiektów';
+}
+
+// ---- WIDOK 2: obiekty wybranego województwa ----
+let photoItems = []; // aktualna lista do lightboxa
+
+function showDetail(name){
+  const list = [...palacesByVoivodeship[name]].sort((a, b) => a.town.localeCompare(b.town, 'pl'));
+  photoItems = list;
+
+  detailTitle.textContent = name;
+  detailGrid.innerHTML = '';
+
+  list.forEach((c, i) => {
+    const el = document.createElement('div');
+    el.className = 'voivo-tile';
+    el.style.cursor = 'pointer';
+    el.innerHTML = `
+      <img src="${c.thumb}" alt="${c.name}" loading="lazy">
+      <div class="voivo-label">
+        <div class="voivo-name">${c.town}</div>
+        <div class="voivo-cap">${c.name}</div>
+      </div>`;
+    el.addEventListener('click', () => openLightbox(i));
+    detailGrid.appendChild(el);
+  });
+
+  // kafelek "dodaj kolejny obiekt"
+  const addEl = document.createElement('div');
+  addEl.className = 'voivo-tile empty';
+  addEl.innerHTML = `
+    <svg class="voivo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><line x1="50" y1="20" x2="50" y2="80" stroke="#c8a35a" stroke-width="6"/><line x1="20" y1="50" x2="80" y2="50" stroke="#c8a35a" stroke-width="6"/></svg>
+    <div class="voivo-label">
+      <div class="voivo-note">+ Dodaj kolejny obiekt</div>
+    </div>`;
+  detailGrid.appendChild(addEl);
+
+  listIntro.hidden = true;
+  voivoGrid.hidden = true;
+  detailView.hidden = false;
+  window.scrollTo({ top: detailView.offsetTop - 90, behavior: 'smooth' });
+  location.hash = slugify(name);
+}
+
+function showList(){
+  detailView.hidden = true;
+  listIntro.hidden = false;
+  voivoGrid.hidden = false;
+  history.replaceState(null, '', location.pathname);
+}
+
+function slugify(str){
+  return str.toLowerCase()
+    .replace(/ł/g,'l').replace(/ą/g,'a').replace(/ć/g,'c').replace(/ę/g,'e')
+    .replace(/ń/g,'n').replace(/ó/g,'o').replace(/ś/g,'s').replace(/ż|ź/g,'z')
+    .replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+}
+
+backLink.addEventListener('click', (e) => { e.preventDefault(); showList(); });
+
+// ---- Lightbox ----
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+const lbCap = document.getElementById('lbCap');
+let currentIndex = 0;
+
+function openLightbox(index){
+  currentIndex = index;
+  showImage();
+  lightbox.classList.add('open');
+}
+function showImage(){
+  const item = photoItems[currentIndex];
+  lbImg.src = item.full;
+  lbImg.alt = item.name;
+  lbCap.textContent = `${item.name} — ${item.town}`;
+}
+function closeLightbox(){ lightbox.classList.remove('open'); }
+function nextImage(){ currentIndex = (currentIndex + 1) % photoItems.length; showImage(); }
+function prevImage(){ currentIndex = (currentIndex - 1 + photoItems.length) % photoItems.length; showImage(); }
+
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+document.getElementById('lbNext').addEventListener('click', nextImage);
+document.getElementById('lbPrev').addEventListener('click', prevImage);
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowRight') nextImage();
+  if (e.key === 'ArrowLeft') prevImage();
+});
+
+renderVoivoList();
+</script>
+
+</body>
+</html>

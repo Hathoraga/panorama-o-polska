@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zamkowe wieści — Ministerstwo Podróży</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <img class="emblem" src="images/logo.jpg" alt="Panorama O! Polska">
+    <div class="divider"></div>
+    <div class="brand-name">Ministerstwo<br>Podróży</div>
+  </div>
+  <div class="burger"><span></span><span></span><span></span></div>
+</header>
+
+<section class="page-hero">
+  <a class="breadcrumb" href="index.html">← Ministerstwo Podróży</a>
+  <h1>Zamkowe wieści</h1>
+  <p>Mury milczą tylko pozornie. Za każdą bramą coś się dzieje – odkrywane freski, zapowiadane festiwale, aukcje rezydencji, remonty, które budzą wieże ze snu, i książki, które piszą swoje historie na nowo.<br><br>Tu dowiesz się pierwszy, zanim usłyszy o tym reszta królestwa.</p>
+</section>
+
+<div class="news-intro">
+  <div class="eyebrow">WIEŚCI</div>
+  <h2>Co słychać za murami</h2>
+</div>
+
+<div class="news-filters">
+  <span>Historia</span>
+  <span>Wydarzenia</span>
+  <span>Książki</span>
+  <span>Filmy</span>
+  <span>Na sprzedaż</span>
+  <span>Renowacje</span>
+</div>
+
+<section class="news-grid" id="newsGrid"></section>
+
+<footer>
+  <img src="images/logo.jpg" alt="Panorama O! Polska" loading="lazy" style="width:200px; margin:0 auto 18px; opacity:.9;">
+  <span class="foot-mark">Panorama O! Polska</span>
+  Ministerstwo Podróży · Wszelkie prawa zastrzeżone
+</footer>
+
+<script>
+/*
+  JAK DODAĆ ARTYKUŁ:
+  Dopisz obiekt do tablicy `articles` poniżej — pola: tag (kategoria),
+  title, excerpt (krótki zajawkowy opis), date. Możesz też dodać pole
+  thumb ze ścieżką do zdjęcia (images/...) — wtedy zamiast ikony
+  pojawi się prawdziwa miniatura. Artykuły ładują się na bieżąco,
+  więc lista może swobodnie rosnąć.
+
+  Sugerowane kategorie: Historia, Wydarzenia, Książki, Filmy,
+  Na sprzedaż, Renowacje — zgodnie z filtrami nad listą.
+*/
+const articles = [
+  { tag: "Historia",    title: "Odkryto zamurowaną komnatę w skrzydle południowym",
+    excerpt: "Podczas prac konserwatorskich robotnicy natrafili na przejście nieotwierane od pokoleń — a za nim ślady, których nikt się nie spodziewał.",
+    date: "wkrótce", thumb: "" },
+  { tag: "Wydarzenia",  title: "Nocne zwiedzanie przy świecach — zapowiedź jesiennego festiwalu",
+    excerpt: "Raz w roku bramy otwierają się po zmroku. Sprawdź, które rezydencje biorą udział i jak zdobyć bilety.",
+    date: "wkrótce", thumb: "" },
+  { tag: "Książki",     title: "Nowa monografia poświęcona rezydencjom magnackim",
+    excerpt: "Historyk architektury zebrał dekadę badań w jednym tomie — recenzja i fragmenty już wkrótce.",
+    date: "wkrótce", thumb: "" },
+  { tag: "Filmy",       title: "Produkcja kostiumowa kręcona w plenerach jednego z zamków",
+    excerpt: "Ekipa filmowa wybrała mury sprzed wieków jako scenerię nowej opowieści. Za kulisami zdjęć.",
+    date: "wkrótce", thumb: "" },
+  { tag: "Na sprzedaż", title: "Zabytkowa rezydencja szuka nowego właściciela",
+    excerpt: "Oferta, która pojawia się raz na dekadę — historia obiektu, stan techniczny i warunki transakcji.",
+    date: "wkrótce", thumb: "" },
+  { tag: "Renowacje",   title: "Rusza renowacja dachu i elewacji wschodniego skrzydła",
+    excerpt: "Prace potrwają dwa sezony. Sprawdź, jak będzie wyglądać obiekt po zakończeniu inwestycji.",
+    date: "wkrótce", thumb: "" }
+];
+
+const newsIcon = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#c8a35a" stroke-width="4"><rect x="16" y="22" width="68" height="56"/><line x1="28" y1="38" x2="72" y2="38"/><line x1="28" y1="50" x2="72" y2="50"/><line x1="28" y1="62" x2="54" y2="62"/></g></svg>`;
+
+const grid = document.getElementById('newsGrid');
+
+articles.forEach(a => {
+  const el = document.createElement('article');
+  el.className = 'news-card';
+  el.innerHTML = `
+    <div class="news-thumb">
+      ${a.thumb ? `<img src="${a.thumb}" alt="${a.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">` : newsIcon}
+    </div>
+    <div class="news-body">
+      <span class="news-tag">${a.tag}</span>
+      <h3>${a.title}</h3>
+      <p>${a.excerpt}</p>
+      <div class="news-meta">${a.date}</div>
+    </div>`;
+  grid.appendChild(el);
+});
+</script>
+
+</body>
+</html>

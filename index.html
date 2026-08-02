@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ministerstwo Podróży — Panorama O! Polska</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <img class="emblem" src="images/logo.jpg" alt="Panorama O! Polska">
+    <div class="divider"></div>
+    <div class="brand-name">Ministerstwo<br>Podróży</div>
+  </div>
+  <div class="burger"><span></span><span></span><span></span></div>
+</header>
+
+<section class="hero">
+  <h1>Za bramą czeka<br>przygoda</h1>
+  <p>Zamki, pałace i miejsca, które warto odwiedzić choć raz w życiu.</p>
+  <a class="cta-outline" href="#komnaty">Rozpocznij zwiedzanie</a>
+</section>
+
+<section class="intro">
+  <div class="eyebrow">Witaj w ministerstwie</div>
+  <h2>Podróż, która zaczyna się od progu</h2>
+  <p>Ta strona to kolekcja miejsc, które warto zobaczyć — warowne zamki, eleganckie pałace, okazałe dwory czy mroczne podziemia. Niektóre z nich można zwiedzić, w innych zamieszkać, dobrze zjeść czy też dotknąć nieznanej historii ukrytej w kamieniu.</p>
+</section>
+
+<div class="plan-heading" id="komnaty">
+  <div class="eyebrow">Plan zwiedzania</div>
+  <h2>Wybierz komnatę</h2>
+</div>
+
+<section class="rooms">
+
+  <article class="room-card">
+    <div class="panel photo" style="background-image:url('images/zamek-lancut-thumb.jpg');">
+    </div>
+    <div class="room-body">
+      <h3>Zamki</h3>
+      <p>Warowne mury, baszty i fosy — twierdze, które broniły granic i rodów.</p>
+      <a class="enter-link" href="zamki.html">Wejdź do komnaty →</a>
+    </div>
+  </article>
+
+  <article class="room-card">
+    <div class="panel">
+      <svg viewBox="0 0 100 100"><g fill="#c8a35a"><polygon points="10,60 50,20 90,60 90,86 10,86"/><circle cx="50" cy="38" r="6" fill="#4a1620"/></g></svg>
+    </div>
+    <div class="room-body">
+      <h3>Pałace i dwory</h3>
+      <p>Rezydencje magnackie i szlacheckie, złocone salony i rodowe portrety.</p>
+      <a class="enter-link" href="palace.html">Wejdź do komnaty →</a>
+    </div>
+  </article>
+
+  <article class="room-card">
+    <div class="panel">
+      <svg viewBox="0 0 100 100"><g fill="none" stroke="#c8a35a" stroke-width="4"><path d="M10 86 L10 55 Q50 15 90 55 L90 86"/><path d="M28 86 L28 60 Q50 40 72 60 L72 86"/></g></svg>
+    </div>
+    <div class="room-body">
+      <h3>Twierdze i podziemia</h3>
+      <p>Bastiony, kazamaty i systemy fortyfikacji ukryte pod ziemią.</p>
+      <a class="enter-link" href="twierdze.html">Wejdź do komnaty →</a>
+    </div>
+  </article>
+
+  <article class="room-card">
+    <div class="panel">
+      <svg viewBox="0 0 100 100"><polygon fill="#c8a35a" points="50,10 61,38 91,38 67,57 76,86 50,68 24,86 33,57 9,38 39,38"/></svg>
+    </div>
+    <div class="room-body">
+      <h3>Atrakcje</h3>
+      <p>Ogrody, muzea i wydarzenia towarzyszące — to, co warto zobaczyć obok.</p>
+      <a class="enter-link" href="atrakcje.html">Wejdź do komnaty →</a>
+    </div>
+  </article>
+
+  <article class="room-card">
+    <div class="panel">
+      <svg viewBox="0 0 100 100"><g fill="#c8a35a"><path d="M50 12 C34 12 26 28 26 44 C26 64 38 72 38 84 L44 78 L50 86 L56 78 L62 84 C62 72 74 64 74 44 C74 28 66 12 50 12 Z"/><circle cx="41" cy="42" r="4" fill="#4a1620"/><circle cx="59" cy="42" r="4" fill="#4a1620"/></g></svg>
+    </div>
+    <div class="room-body">
+      <h3>Zamkowe wieści</h3>
+      <p>Artykuły, zapowiedzi wydarzeń i wiadomości ze świata polskich rezydencji.</p>
+      <a class="enter-link" href="wiesci.html">Wejdź do komnaty →</a>
+    </div>
+  </article>
+
+</section>
+
+<section class="gallery-section" id="galeria">
+  <div class="plan-heading" style="padding:0 0 0;">
+    <div class="eyebrow">Album podróży</div>
+    <h2>Galeria</h2>
+  </div>
+  <div class="gallery-grid" id="galleryGrid"></div>
+</section>
+
+<section class="map-section">
+  <div class="eyebrow">Plan majątku</div>
+  <h2>Mapa podróży</h2>
+  <p>Wszystkie odwiedzone miejsca zaznaczone na jednej mapie — kliknij pinezkę, aby zobaczyć szczegóły.</p>
+  <div class="map-frame">
+    <div class="map-toolbar">
+      <span>⇱</span>
+      <span style="font-weight:600;">Zamki, pałace …</span>
+      <span style="margin-left:auto;">⤢</span>
+    </div>
+    <div class="map-canvas">
+      <div class="pin" style="top:30%; left:35%;"></div>
+      <div class="pin" style="top:48%; left:58%;"></div>
+      <div class="pin" style="top:62%; left:44%;"></div>
+      <div class="pin" style="top:38%; left:70%;"></div>
+      <div class="pin" style="top:70%; left:24%;"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="images/logo.jpg" loading="lazy" alt="Panorama O! Polska" style="width:200px; margin:0 auto 18px; opacity:.9;">
+  <span class="foot-mark">Panorama O! Polska</span>
+  Ministerstwo Podróży · Wszelkie prawa zastrzeżone
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">✕</button>
+  <button class="lb-prev" id="lbPrev">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-next" id="lbNext">›</button>
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
+<script>
+/*
+  JAK DODAĆ KOLEJNE ZDJĘCIA DO ALBUMU:
+  1. Wrzuć plik do folderu images/ — najlepiej dwie wersje:
+     - miniatura ok. 600px szerokości (do siatki) np. images/nazwa-thumb.jpg
+     - pełny rozmiar max ok. 1920px szerokości (do podglądu) np. images/nazwa.jpg
+     Format WebP lub JPG jakość ~80 — mały rozmiar pliku = szybkie ładowanie.
+  2. Dodaj wpis do tablicy `galleryImages` poniżej (thumb, full, caption).
+  3. Zdjęcia ładują się leniwie (loading="lazy") — strona pozostaje szybka
+     nawet przy setkach fotografii, bo przeglądarka pobiera tylko te,
+     które są blisko widoku użytkownika.
+*/
+const galleryImages = [
+  { thumb: "images/zamek-lancut-thumb.jpg", full: "images/zamek-lancut.jpg", caption: "Zamek w Łańcucie" }
+  // { thumb: "images/kolejne-thumb.jpg", full: "images/kolejne.jpg", caption: "Nazwa miejsca" },
+];
+
+const PLACEHOLDER_COUNT = 5; // puste kafelki pokazujące gdzie trafią kolejne zdjęcia
+
+const grid = document.getElementById('galleryGrid');
+
+galleryImages.forEach((item, i) => {
+  const el = document.createElement('div');
+  el.className = 'gallery-item';
+  el.innerHTML = `<img src="${item.thumb}" alt="${item.caption}" loading="lazy">`;
+  el.addEventListener('click', () => openLightbox(i));
+  grid.appendChild(el);
+});
+
+for (let i = 0; i < PLACEHOLDER_COUNT; i++) {
+  const el = document.createElement('div');
+  el.className = 'gallery-item placeholder';
+  el.textContent = '+ Miejsce na kolejne zdjęcie';
+  grid.appendChild(el);
+}
+
+// ---- Lightbox ----
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+const lbCap = document.getElementById('lbCap');
+let currentIndex = 0;
+
+function openLightbox(index){
+  currentIndex = index;
+  showImage();
+  lightbox.classList.add('open');
+}
+function showImage(){
+  const item = galleryImages[currentIndex];
+  lbImg.src = item.full;
+  lbImg.alt = item.caption;
+  lbCap.textContent = item.caption;
+}
+function closeLightbox(){ lightbox.classList.remove('open'); }
+function nextImage(){ currentIndex = (currentIndex + 1) % galleryImages.length; showImage(); }
+function prevImage(){ currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length; showImage(); }
+
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+document.getElementById('lbNext').addEventListener('click', nextImage);
+document.getElementById('lbPrev').addEventListener('click', prevImage);
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowRight') nextImage();
+  if (e.key === 'ArrowLeft') prevImage();
+});
+
+// Kliknięcie w zdjęcie zamku w karcie "Zamki" też otwiera galerię
+document.querySelectorAll('.room-card .panel.photo').forEach(panel => {
+  panel.style.cursor = 'pointer';
+  panel.addEventListener('click', () => openLightbox(0));
+});
+</script>
+
+</body>
+</html>
