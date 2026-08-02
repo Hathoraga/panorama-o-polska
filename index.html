@@ -56,12 +56,16 @@
   <p>Ta strona to kolekcja miejsc, które warto zobaczyć — warowne zamki, eleganckie pałace, okazałe dwory czy mroczne podziemia. Niektóre z nich można zwiedzić, w innych zamieszkać, dobrze zjeść czy też dotknąć nieznanej historii ukrytej w kamieniu.</p>
 </section>
 
-<div class="plan-heading" id="komnaty">
-  <div class="eyebrow">Plan zwiedzania</div>
-  <h2>Wybierz komnatę</h2>
-</div>
+<section class="search-section">
+  <div class="eyebrow">Szukaj</div>
+  <h2>Znajdź miejscowość</h2>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Wpisz nazwę miejscowości…" autocomplete="off">
+    <div class="search-results" id="searchResults" hidden></div>
+  </div>
+</section>
 
-<section class="rooms">
+<section class="rooms" id="komnaty">
 
   <article class="room-card">
     <div class="panel photo" style="background-image:url('images/zamek-lancut-thumb.jpg');">
@@ -162,24 +166,72 @@
   <div class="lb-cap" id="lbCap"></div>
 </div>
 
+<script src="dane.js"></script>
 <script>
 /*
-  JAK DODAĆ KOLEJNE ZDJĘCIA DO ALBUMU:
-  1. Wrzuć plik do folderu images/ — najlepiej dwie wersje:
-     - miniatura ok. 600px szerokości (do siatki) np. images/nazwa-thumb.jpg
-     - pełny rozmiar max ok. 1920px szerokości (do podglądu) np. images/nazwa.jpg
-     Format WebP lub JPG jakość ~80 — mały rozmiar pliku = szybkie ładowanie.
-  2. Dodaj wpis do tablicy `galleryImages` poniżej (thumb, full, caption).
-  3. Zdjęcia ładują się leniwie (loading="lazy") — strona pozostaje szybka
-     nawet przy setkach fotografii, bo przeglądarka pobiera tylko te,
-     które są blisko widoku użytkownika.
+  Wyszukiwarka miejscowości — przeszukuje wszystkie komnaty naraz
+  (Zamki, Pałace, Twierdze, Atrakcje) na podstawie dane.js. Wynik
+  linkuje do właściwej strony kategorii i automatycznie otwiera
+  tam odpowiednie województwo (patrz obsługa location.hash w każdej
+  z podstron kategorii).
 */
-const galleryImages = [
-  { thumb: "images/zamek-lancut-thumb.jpg", full: "images/zamek-lancut.jpg", caption: "Zamek w Łańcucie" }
-  // { thumb: "images/kolejne-thumb.jpg", full: "images/kolejne.jpg", caption: "Nazwa miejsca" },
-];
+function slugifyName(str){
+  return str.toLowerCase()
+    .replace(/ł/g,'l').replace(/ą/g,'a').replace(/ć/g,'c').replace(/ę/g,'e')
+    .replace(/ń/g,'n').replace(/ó/g,'o').replace(/ś/g,'s').replace(/ż|ź/g,'z')
+    .replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+}
 
-const PLACEHOLDER_COUNT = 5; // puste kafelki pokazujące gdzie trafią kolejne zdjęcia
+const searchInput   = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.trim().toLocaleLowerCase('pl');
+  if (q.length < 2) {
+    searchResults.hidden = true;
+    searchResults.innerHTML = '';
+    return;
+  }
+
+  const matches = PLACES.filter(p =>
+    p.town.toLocaleLowerCase('pl').includes(q) ||
+    p.name.toLocaleLowerCase('pl').includes(q)
+  );
+
+  searchResults.innerHTML = '';
+
+  if (matches.length === 0) {
+    searchResults.innerHTML = `<div class="search-empty">Brak wyników dla „${searchInput.value}”.</div>`;
+  } else {
+    matches.slice(0, 8).forEach(p => {
+      const a = document.createElement('a');
+      a.className = 'search-result';
+      a.href = `${p.category}.html#${slugifyName(p.voivodeship)}`;
+      a.innerHTML = `
+        <span class="sr-town">${p.town}</span>
+        <span class="sr-meta">${p.name} · ${CATEGORY_LABELS[p.category] || ''}</span>`;
+      searchResults.appendChild(a);
+    });
+  }
+  searchResults.hidden = false;
+});
+
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.search-box')) searchResults.hidden = true;
+});
+</script>
+
+<script>
+/*
+  Galeria pokazuje automatycznie najnowsze zdjęcia ze wszystkich
+  komnat (Zamki, Pałace, Twierdze, Atrakcje) — źródłem danych jest
+  wspólny plik dane.js. Nowe zdjęcie dodane w dowolnej komnacie
+  pojawi się tutaj samo, bez dodatkowej pracy.
+*/
+const GALLERY_TARGET = 6; // ile kafelków ma docelowo pokazywać Galeria
+
+const galleryImages = getLatestPhotos(GALLERY_TARGET);
+const placeholderCount = Math.max(0, GALLERY_TARGET - galleryImages.length);
 
 const grid = document.getElementById('galleryGrid');
 
@@ -191,7 +243,7 @@ galleryImages.forEach((item, i) => {
   grid.appendChild(el);
 });
 
-for (let i = 0; i < PLACEHOLDER_COUNT; i++) {
+for (let i = 0; i < placeholderCount; i++) {
   const el = document.createElement('div');
   el.className = 'gallery-item placeholder';
   el.textContent = '+ Miejsce na kolejne zdjęcie';
@@ -213,7 +265,7 @@ function showImage(){
   const item = galleryImages[currentIndex];
   lbImg.src = item.full;
   lbImg.alt = item.caption;
-  lbCap.textContent = item.caption;
+  lbCap.textContent = `${item.caption}${item.categoryLabel ? ' · ' + item.categoryLabel : ''}`;
 }
 function closeLightbox(){ lightbox.classList.remove('open'); }
 function nextImage(){ currentIndex = (currentIndex + 1) % galleryImages.length; showImage(); }

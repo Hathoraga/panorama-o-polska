@@ -92,46 +92,13 @@
   Ministerstwo Podróży · Wszelkie prawa zastrzeżone
 </footer>
 
+<script src="dane.js"></script>
 <script>
 /*
-  JAK DODAĆ KOLEJNY ZAMEK:
-  1. Wrzuć zdjęcie do images/ — najlepiej dwie wersje: miniaturę (~600px
-     szer.) i pełny rozmiar (~1920px szer.), format WebP lub JPG jakość ~80.
-  2. Znajdź właściwe województwo w obiekcie `castlesByVoivodeship` poniżej
-     i dopisz do jego tablicy nowy wpis:
-     { town: "Nazwa miejscowości", name: "Nazwa zamku", photos: [
-         { thumb: "images/plik-thumb.jpg", full: "images/plik.jpg" }
-       ] }
-  3. Obiekty w każdym województwie sortują się automatycznie alfabetycznie
-     po nazwie miejscowości — kolejność w tablicy nie ma znaczenia.
-  4. Liczba obiektów w województwie jest dowolna — od zera w górę.
-
-  JAK DODAĆ KOLEJNE ZDJĘCIE DO ISTNIEJĄCEGO ZAMKU:
-  Po prostu dopisz kolejny wpis { thumb, full } do tablicy `photos`
-  danego obiektu — pojawi się automatycznie w jego galerii.
+  Dane obiektów pochodzą teraz ze wspólnego pliku dane.js (patrz ten
+  plik po instrukcję, jak dodać kolejny zamek albo kolejne zdjęcie).
 */
-const castlesByVoivodeship = {
-  "Dolnośląskie": [],
-  "Kujawsko-pomorskie": [],
-  "Lubelskie": [],
-  "Lubuskie": [],
-  "Łódzkie": [],
-  "Małopolskie": [],
-  "Mazowieckie": [],
-  "Opolskie": [],
-  "Podkarpackie": [
-    { town: "Łańcut", name: "Zamek w Łańcucie", photos: [
-        { thumb: "images/zamek-lancut-thumb.jpg", full: "images/zamek-lancut.jpg" }
-      ] }
-  ],
-  "Podlaskie": [],
-  "Pomorskie": [],
-  "Śląskie": [],
-  "Świętokrzyskie": [],
-  "Warmińsko-mazurskie": [],
-  "Wielkopolskie": [],
-  "Zachodniopomorskie": []
-};
+const castlesByVoivodeship = groupByVoivodeship('zamki');
 
 const castleIcon = `<svg class="voivo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="#c8a35a"><rect x="14" y="46" width="14" height="40"/><rect x="34" y="30" width="14" height="56"/><rect x="54" y="46" width="12" height="40"/><rect x="72" y="40" width="14" height="46"/><polygon points="14,46 21,34 28,46"/><polygon points="34,30 41,18 48,30"/><polygon points="72,40 79,28 86,40"/></g></svg>`;
 const addIcon    = `<svg class="voivo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><line x1="50" y1="20" x2="50" y2="80" stroke="#c8a35a" stroke-width="6"/><line x1="20" y1="50" x2="80" y2="50" stroke="#c8a35a" stroke-width="6"/></svg>`;
@@ -312,6 +279,14 @@ document.addEventListener('keydown', (e) => {
 });
 
 renderVoivoList();
+
+// Jeśli w adresie jest kotwica (np. z wyszukiwarki na stronie głównej),
+// od razu otwórz to województwo.
+if (location.hash) {
+  const target = decodeURIComponent(location.hash.slice(1));
+  const match = Object.keys(castlesByVoivodeship).find(name => slugify(name) === target);
+  if (match) showDetail(match);
+}
 </script>
 
 <script src="nav.js"></script>

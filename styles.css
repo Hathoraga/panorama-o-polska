@@ -850,3 +850,76 @@
 @media (min-width:720px){
   .contact-grid{ grid-template-columns:repeat(2, 1fr); }
 }
+
+/* ===== WYSZUKIWARKA MIEJSCOWOŚCI ===== */
+.search-section{
+  max-width:640px;
+  margin:0 auto;
+  padding:50px 24px 10px;
+  text-align:center;
+}
+.search-box{
+  position:relative;
+  max-width:480px;
+  margin:28px auto 0;
+  text-align:left;
+}
+#searchInput{
+  width:100%;
+  box-sizing:border-box;
+  font-family:'EB Garamond', serif;
+  font-size:1.15rem;
+  padding:14px 20px;
+  border:1px solid rgba(94,31,39,.35);
+  background:var(--cream-light);
+  color:var(--ink);
+  outline:none;
+  transition:border-color .2s ease;
+}
+#searchInput:focus{
+  border-color:var(--maroon);
+}
+#searchInput::placeholder{
+  color:#9a8f70;
+}
+.search-results{
+  position:absolute;
+  top:calc(100% + 6px);
+  left:0; right:0;
+  background:var(--cream-light);
+  border:1px solid rgba(94,31,39,.25);
+  box-shadow:0 24px 50px -20px rgba(30,20,5,.4);
+  max-height:340px;
+  overflow-y:auto;
+  z-index:60;
+}
+.search-result{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  padding:12px 20px;
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+.search-result:last-child{ border-bottom:none; }
+.search-result:hover{
+  background:rgba(94,31,39,.06);
+}
+.sr-town{
+  font-family:'Playfair Display', serif;
+  font-weight:700;
+  font-size:1.05rem;
+  color:var(--ink);
+}
+.sr-meta{
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  font-size:.92rem;
+  color:#6a5f45;
+}
+.search-empty{
+  padding:16px 20px;
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  color:#6a5f45;
+  font-size:1rem;
+}

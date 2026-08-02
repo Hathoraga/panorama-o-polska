@@ -82,37 +82,13 @@
   Ministerstwo Podróży · Wszelkie prawa zastrzeżone
 </footer>
 
+<script src="dane.js"></script>
 <script>
 /*
-  JAK DODAĆ KOLEJNĄ ATRAKCJĘ:
-  1. Wrzuć zdjęcie do images/ — najlepiej dwie wersje: miniaturę (~600px
-     szer.) i pełny rozmiar (~1920px szer.), format WebP lub JPG jakość ~80.
-  2. Znajdź właściwe województwo w obiekcie `attractionsByVoivodeship`
-     poniżej i dopisz do jego tablicy nowy wpis:
-     { town: "Nazwa miejscowości", name: "Nazwa muzeum / skansenu / miejsca",
-       thumb: "images/plik-thumb.jpg", full: "images/plik.jpg" }
-  3. Obiekty w każdym województwie sortują się automatycznie alfabetycznie
-     po nazwie miejscowości — kolejność w tablicy nie ma znaczenia.
-  4. Liczba obiektów w województwie jest dowolna — od zera w górę.
+  Dane obiektów pochodzą teraz ze wspólnego pliku dane.js (patrz ten
+  plik po instrukcję, jak dodać kolejny obiekt albo kolejne zdjęcie).
 */
-const attractionsByVoivodeship = {
-  "Dolnośląskie": [],
-  "Kujawsko-pomorskie": [],
-  "Lubelskie": [],
-  "Lubuskie": [],
-  "Łódzkie": [],
-  "Małopolskie": [],
-  "Mazowieckie": [],
-  "Opolskie": [],
-  "Podkarpackie": [],
-  "Podlaskie": [],
-  "Pomorskie": [],
-  "Śląskie": [],
-  "Świętokrzyskie": [],
-  "Warmińsko-mazurskie": [],
-  "Wielkopolskie": [],
-  "Zachodniopomorskie": []
-};
+const attractionsByVoivodeship = groupByVoivodeship('atrakcje');
 
 const attractionIcon = `<svg class="voivo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><polygon fill="#c8a35a" points="50,10 61,38 91,38 67,57 76,86 50,68 24,86 33,57 9,38 39,38"/></svg>`;
 
@@ -132,7 +108,7 @@ function renderVoivoList(){
     if (list.length > 0) {
       el.className = 'voivo-tile';
       el.innerHTML = `
-        <img src="${list[0].thumb}" alt="${name}" loading="lazy">
+        <img src="${list[0].photos[0].thumb}" alt="${name}" loading="lazy">
         <div class="voivo-label">
           <div class="voivo-name">${name}</div>
           <div class="voivo-cap">${list.length} ${objectWord(list.length)}</div>
@@ -172,7 +148,7 @@ function showDetail(name){
     el.className = 'voivo-tile';
     el.style.cursor = 'pointer';
     el.innerHTML = `
-      <img src="${c.thumb}" alt="${c.name}" loading="lazy">
+      <img src="${c.photos[0].thumb}" alt="${c.name}" loading="lazy">
       <div class="voivo-label">
         <div class="voivo-name">${c.town}</div>
       </div>`;
@@ -226,7 +202,7 @@ function openLightbox(index){
 }
 function showImage(){
   const item = photoItems[currentIndex];
-  lbImg.src = item.full;
+  lbImg.src = item.photos[0].full;
   lbImg.alt = item.name;
   lbCap.textContent = `${item.name} — ${item.town}`;
 }
@@ -246,6 +222,14 @@ document.addEventListener('keydown', (e) => {
 });
 
 renderVoivoList();
+
+// Jeśli w adresie jest kotwica (np. z wyszukiwarki na stronie głównej),
+// od razu otwórz to województwo.
+if (location.hash) {
+  const target = decodeURIComponent(location.hash.slice(1));
+  const match = Object.keys(attractionsByVoivodeship).find(name => slugify(name) === target);
+  if (match) showDetail(match);
+}
 </script>
 
 <script src="nav.js"></script>
