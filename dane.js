@@ -48,7 +48,8 @@ const PLACES = [
   thumb: "images/palace-piorunow-thumb.jpg", full: "images/palace-piorunow.jpg" },
   { category: "twierdze", voivodeship: "Małopolskie", town: "Kraków", name: "Kopiec Kościuszki, muzeum",
   thumb: "images/twierdze-krakow-thumb.jpg", full: "images/twierdze-krakow.jpg" },
-  
+  { category: "palace", voivodeship: "Wielkopolskie", town: "Śmiłów", name: "Muzeum Ziemiaństwa, park, kawiarnia, hotelik",
+  thumb: "images/palace-smilow-thumb.jpg", full: "images/palace-smilow.jpg" }
   // Kolejne wpisy dopisuj poniżej, np.:
   // { category: "palace", voivodeship: "Mazowieckie", town: "Nieborów", name: "Pałac w Nieborowie",
   //   thumb: "images/nieborow-thumb.jpg", full: "images/nieborow.jpg" },
