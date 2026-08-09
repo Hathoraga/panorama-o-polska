@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 </head>
 <body data-page="index">
 
@@ -123,25 +125,11 @@
   <div class="gallery-grid" id="galleryGrid"></div>
 </section>
 
-<section class="map-section">
+<section class="live-map-section">
   <div class="eyebrow">Plan majątku</div>
   <h2>Mapa podróży</h2>
-  <p>Wszystkie odwiedzone miejsca zaznaczone na jednej mapie — otwórz ją, aby zobaczyć szczegóły.</p>
-  <a class="map-frame" href="https://goo.gl/maps/1J1qScRf6H69Nwqu6?g_st=ac" target="_blank" rel="noopener">
-    <div class="map-toolbar">
-      <span>⇱</span>
-      <span style="font-weight:600;">Zamki, pałace i dwory</span>
-      <span style="margin-left:auto;">⤢</span>
-    </div>
-    <div class="map-canvas">
-      <div class="pin" style="top:30%; left:35%;"></div>
-      <div class="pin" style="top:48%; left:58%;"></div>
-      <div class="pin" style="top:62%; left:44%;"></div>
-      <div class="pin" style="top:38%; left:70%;"></div>
-      <div class="pin" style="top:70%; left:24%;"></div>
-    </div>
-  </a>
-  <div class="map-open-note">Otwórz w Google Maps →</div>
+  <p>Wszystkie dodane miejsca, zaznaczone tam, gdzie naprawdę leżą — dotknij pinezki, aby zobaczyć szczegóły.</p>
+  <div id="travelMap" class="live-map"></div>
 </section>
 
 <footer>
@@ -159,6 +147,47 @@
 </div>
 
 <script src="dane.js"></script>
+<script>
+/*
+  Mapa podróży — prawdziwa mapa (Leaflet + OpenStreetMap, bez klucza
+  API), z pinezką dla każdego obiektu, który ma ustawione lat/lng
+  w dane.js. Nowy obiekt ze współrzędnymi pojawi się tu automatycznie.
+*/
+(function initTravelMap(){
+  const points = getMapPoints();
+  const mapEl = document.getElementById('travelMap');
+  if (!mapEl) return;
+
+  const map = L.map('travelMap', { scrollWheelZoom: false });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; OpenStreetMap, &copy; CARTO',
+    maxZoom: 19
+  }).addTo(map);
+
+  const goldIcon = L.divIcon({
+    className: 'map-pin-icon',
+    html: '<span></span>',
+    iconSize: [18, 18],
+    iconAnchor: [9, 9]
+  });
+
+  if (points.length > 0) {
+    const markers = points.map(p => {
+      const m = L.marker([p.lat, p.lng], { icon: goldIcon }).addTo(map);
+      m.bindPopup(
+        `<strong>${p.name}</strong><br>${p.town}<br><a href="${p.categoryUrl}">${p.categoryLabel} →</a>`
+      );
+      return m;
+    });
+    const group = L.featureGroup(markers);
+    map.fitBounds(group.getBounds().pad(0.25));
+    if (points.length === 1) map.setZoom(9);
+  } else {
+    map.setView([52.0, 19.5], 6); // środek Polski, gdy brak jeszcze pinezek
+  }
+})();
+</script>
 <script>
 /*
   Wyszukiwarka miejscowości — przeszukuje wszystkie komnaty naraz
