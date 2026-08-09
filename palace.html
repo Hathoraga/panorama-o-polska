@@ -156,15 +156,6 @@ function showDetail(name){
     detailGrid.appendChild(el);
   });
 
-  // kafelek "dodaj kolejny obiekt"
-  const addEl = document.createElement('div');
-  addEl.className = 'voivo-tile empty';
-  addEl.innerHTML = `
-    <svg class="voivo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><line x1="50" y1="20" x2="50" y2="80" stroke="#c8a35a" stroke-width="6"/><line x1="20" y1="50" x2="80" y2="50" stroke="#c8a35a" stroke-width="6"/></svg>
-    <div class="voivo-label">
-      <div class="voivo-note">+ Dodaj kolejny obiekt</div>
-    </div>`;
-  detailGrid.appendChild(addEl);
 
   listIntro.hidden = true;
   voivoGrid.hidden = true;

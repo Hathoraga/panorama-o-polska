@@ -172,15 +172,6 @@ function showDetail(name){
     detailGrid.appendChild(el);
   });
 
-  const addEl = document.createElement('div');
-  addEl.className = 'voivo-tile empty';
-  addEl.innerHTML = `
-    ${addIcon}
-    <div class="voivo-label">
-      <div class="voivo-note">+ Dodaj kolejny obiekt</div>
-    </div>`;
-  detailGrid.appendChild(addEl);
-
   listIntro.hidden = true;
   voivoGrid.hidden = true;
   objectView.hidden = true;
@@ -215,15 +206,6 @@ function showObject(castle){
     el.addEventListener('click', () => openLightbox(i));
     objectGrid.appendChild(el);
   });
-
-  const addEl = document.createElement('div');
-  addEl.className = 'voivo-tile empty';
-  addEl.innerHTML = `
-    ${addIcon}
-    <div class="voivo-label">
-      <div class="voivo-note">+ Dodaj zdjęcie</div>
-    </div>`;
-  objectGrid.appendChild(addEl);
 
   detailView.hidden = true;
   objectView.hidden = false;

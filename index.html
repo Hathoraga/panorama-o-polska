@@ -229,7 +229,6 @@ document.addEventListener('click', (e) => {
 const GALLERY_TARGET = 6; // ile kafelków ma docelowo pokazywać Galeria
 
 const galleryImages = getLatestPhotos(GALLERY_TARGET);
-const placeholderCount = Math.max(0, GALLERY_TARGET - galleryImages.length);
 
 const grid = document.getElementById('galleryGrid');
 
@@ -240,13 +239,6 @@ galleryImages.forEach((item, i) => {
   el.addEventListener('click', () => openLightbox(i));
   grid.appendChild(el);
 });
-
-for (let i = 0; i < placeholderCount; i++) {
-  const el = document.createElement('div');
-  el.className = 'gallery-item placeholder';
-  el.textContent = '+ Miejsce na kolejne zdjęcie';
-  grid.appendChild(el);
-}
 
 // ---- Lightbox ----
 const lightbox = document.getElementById('lightbox');
