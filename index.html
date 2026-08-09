@@ -255,7 +255,7 @@ function showImage(){
   const item = galleryImages[currentIndex];
   lbImg.src = item.full;
   lbImg.alt = item.caption;
-  lbCap.textContent = `${item.caption}${item.categoryLabel ? ' · ' + item.categoryLabel : ''}`;
+  lbCap.innerHTML = `${item.caption}${item.categoryLabel ? ' · <a href="' + item.categoryUrl + '" class="lb-cap-link">' + item.categoryLabel + '</a>' : ''}`;
 }
 function closeLightbox(){ lightbox.classList.remove('open'); }
 function nextImage(){ currentIndex = (currentIndex + 1) % galleryImages.length; showImage(); }

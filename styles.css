@@ -353,6 +353,15 @@
     font-size:1.15rem;
     max-width:92vw;
   }
+  .lb-cap-link{
+    color:var(--gold-bright);
+    font-weight:700;
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+  .lb-cap-link:hover{
+    color:var(--gold);
+  }
   .lb-close, .lb-prev, .lb-next{
     position:absolute;
     background:none;
