@@ -77,7 +77,7 @@
 </div>
 
 <footer>
-  <img src="images/logo.jpg" alt="Panorama O! Polska" loading="lazy" style="width:200px; margin:0 auto 18px; opacity:.9;">
+  <img src="images/logo.jpg" alt="Panorama O! Polska" loading="lazy" style="width:280px; margin:0 auto 18px; opacity:.9;">
   <span class="foot-mark">Panorama O! Polska</span>
   Ministerstwo Podróży · Wszelkie prawa zastrzeżone
 </footer>
@@ -214,12 +214,20 @@ document.addEventListener('keydown', (e) => {
 
 renderVoivoList();
 
-// Jeśli w adresie jest kotwica (np. z wyszukiwarki na stronie głównej),
-// od razu otwórz to województwo.
+// Jeśli w adresie jest kotwica (np. z mapy albo z wyszukiwarki na
+// stronie głównej), od razu otwórz to województwo — a jeśli w linku
+// jest też miejscowość, przejdź prosto do jej zdjęć.
 if (location.hash) {
-  const target = decodeURIComponent(location.hash.slice(1));
-  const match = Object.keys(palacesByVoivodeship).find(name => slugify(name) === target);
-  if (match) showDetail(match);
+  const raw = decodeURIComponent(location.hash.slice(1));
+  const [voivoTarget, townTarget] = raw.split('--');
+  const match = Object.keys(palacesByVoivodeship).find(name => slugify(name) === voivoTarget);
+  if (match) {
+    showDetail(match);
+    if (townTarget) {
+      const idx = photoItems.findIndex(c => slugify(c.town) === townTarget);
+      if (idx !== -1) openLightbox(idx);
+    }
+  }
 }
 </script>
 

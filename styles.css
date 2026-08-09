@@ -106,7 +106,7 @@
   .hero{
     background:radial-gradient(120% 90% at 50% 0%, #1a2e1f 0%, var(--forest) 45%, var(--forest-deep) 100%);
     color:var(--cream-light);
-    padding:110px 28px 90px;
+    padding:64px 28px 44px;
     text-align:center;
     position:relative;
     overflow:hidden;
@@ -159,7 +159,7 @@
   .intro{
     max-width:720px;
     margin:0 auto;
-    padding:100px 28px 70px;
+    padding:48px 28px 40px;
     text-align:center;
   }
   .intro h2{
@@ -174,7 +174,7 @@
 
   .plan-heading{
     text-align:center;
-    padding:60px 28px 10px;
+    padding:36px 28px 10px;
   }
   .plan-heading h2{
     font-size:clamp(2rem, 4vw, 2.8rem);
@@ -185,10 +185,10 @@
   .rooms{
     max-width:760px;
     margin:0 auto;
-    padding:40px 24px 100px;
+    padding:30px 24px 60px;
     display:flex;
     flex-direction:column;
-    gap:60px;
+    gap:40px;
   }
   .room-card{
     background:var(--cream-light);
@@ -277,7 +277,7 @@
   .gallery-section{
     max-width:1100px;
     margin:0 auto;
-    padding:20px 24px 110px;
+    padding:10px 24px 60px;
   }
   .gallery-grid{
     display:grid;
@@ -458,8 +458,8 @@
     text-align:center;
     padding:50px 28px;
     font-family:'Inter', sans-serif;
-    letter-spacing:.08em;
-    font-size:.95rem;
+    letter-spacing:.06em;
+    font-size:.78rem;
   }
   footer .foot-mark{
     font-family:'Inter', sans-serif;
@@ -473,7 +473,7 @@
   .page-hero{
     background:var(--forest);
     color:var(--cream-light);
-    padding:64px 28px 56px;
+    padding:44px 28px 36px;
     text-align:center;
   }
   .breadcrumb{
@@ -518,13 +518,13 @@
   .voivo-intro{
     max-width:640px;
     margin:0 auto;
-    padding:56px 24px 10px;
+    padding:32px 24px 10px;
     text-align:center;
   }
   .voivo-grid{
     max-width:1080px;
     margin:0 auto;
-    padding:36px 20px 110px;
+    padding:26px 20px 60px;
     display:grid;
     grid-template-columns:1fr;
     gap:22px;
@@ -633,7 +633,7 @@
 .news-grid{
   max-width:1080px;
   margin:0 auto;
-  padding:44px 20px 110px;
+  padding:30px 20px 60px;
   display:grid;
   grid-template-columns:1fr;
   gap:26px;
@@ -813,7 +813,7 @@
 .contact-grid{
   max-width:1080px;
   margin:0 auto;
-  padding:36px 20px 90px;
+  padding:26px 20px 60px;
   display:grid;
   grid-template-columns:1fr;
   gap:22px;
@@ -859,7 +859,7 @@
 .search-section{
   max-width:640px;
   margin:0 auto;
-  padding:50px 24px 10px;
+  padding:20px 24px 10px;
   text-align:center;
 }
 .search-box{
@@ -867,6 +867,9 @@
   max-width:480px;
   margin:28px auto 0;
   text-align:left;
+}
+.hero-search{
+  margin-top:34px;
 }
 #searchInput{
   width:100%;
@@ -930,7 +933,7 @@
 .live-map-section{
   background:var(--forest);
   color:var(--cream-light);
-  padding:90px 28px 100px;
+  padding:50px 28px 60px;
   text-align:center;
 }
 .live-map-section h2{
