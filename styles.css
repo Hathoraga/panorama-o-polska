@@ -945,8 +945,9 @@
   font-size:1.15rem;
 }
 .live-map{
-  max-width:1000px;
-  height:480px;
+  max-width:640px;
+  aspect-ratio:1/1;
+  height:auto;
   margin:0 auto;
   border:1px solid rgba(200,163,90,.5);
   text-align:left;
@@ -973,9 +974,6 @@
   color:var(--maroon);
   font-weight:700;
   text-decoration:underline;
-}
-@media (max-width:560px){
-  .live-map{ height:380px; }
 }
 
 .map-legend{
