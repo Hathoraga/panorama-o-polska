@@ -130,6 +130,12 @@
   <h2>Mapa podróży</h2>
   <p>Wszystkie dodane miejsca, zaznaczone tam, gdzie naprawdę leżą — dotknij pinezki, aby zobaczyć szczegóły.</p>
   <div id="travelMap" class="live-map"></div>
+  <div class="map-legend">
+    <span><i style="background:#b33a3a;"></i> Zamki</span>
+    <span><i style="background:#d98a3d;"></i> Pałace i dwory</span>
+    <span><i style="background:#7a5230;"></i> Twierdze i podziemia</span>
+    <span><i style="background:#5a8a4a;"></i> Atrakcje</span>
+  </div>
 </section>
 
 <footer>
@@ -160,32 +166,39 @@
 
   const map = L.map('travelMap', { scrollWheelZoom: false });
 
+  // Zawsze pokazuj całą Polskę w tym samym ujęciu — niezależnie od
+  // tego, gdzie akurat są pinezki (nie dociskamy widoku do punktów).
+  const POLAND_BOUNDS = L.latLngBounds([[48.9, 13.8], [55.0, 24.3]]);
+  map.fitBounds(POLAND_BOUNDS);
+
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; OpenStreetMap, &copy; CARTO',
     maxZoom: 19
   }).addTo(map);
 
-  const goldIcon = L.divIcon({
-    className: 'map-pin-icon',
-    html: '<span></span>',
-    iconSize: [18, 18],
-    iconAnchor: [9, 9]
-  });
+  const PIN_COLORS = {
+    zamki:    '#b33a3a', // czerwony
+    palace:   '#d98a3d', // pomarańczowy
+    twierdze: '#7a5230', // brązowy
+    atrakcje: '#5a8a4a'  // zielony
+  };
 
-  if (points.length > 0) {
-    const markers = points.map(p => {
-      const m = L.marker([p.lat, p.lng], { icon: goldIcon }).addTo(map);
-      m.bindPopup(
-        `<strong>${p.name}</strong><br>${p.town}<br><a href="${p.categoryUrl}">${p.categoryLabel} →</a>`
-      );
-      return m;
+  function pinIcon(color){
+    return L.divIcon({
+      className: 'map-pin-icon',
+      html: `<span style="background:${color};"></span>`,
+      iconSize: [18, 18],
+      iconAnchor: [9, 9]
     });
-    const group = L.featureGroup(markers);
-    map.fitBounds(group.getBounds().pad(0.25));
-    if (points.length === 1) map.setZoom(9);
-  } else {
-    map.setView([52.0, 19.5], 6); // środek Polski, gdy brak jeszcze pinezek
   }
+
+  points.forEach(p => {
+    const color = PIN_COLORS[p.category] || '#c8a35a';
+    const m = L.marker([p.lat, p.lng], { icon: pinIcon(color) }).addTo(map);
+    m.bindPopup(
+      `<strong>${p.name}</strong><br>${p.town}<br><a href="${p.categoryUrl}">${p.categoryLabel} →</a>`
+    );
+  });
 })();
 </script>
 <script>

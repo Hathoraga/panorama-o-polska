@@ -86,6 +86,16 @@ function groupByVoivodeship(category) {
   return map;
 }
 
+// Zamienia nazwę (województwa lub miejscowości) na fragment adresu
+// URL — bez polskich znaków, spacji itp. Używane do budowania
+// linków, które od razu otwierają właściwe miejsce na podstronie.
+function slugify(str) {
+  return str.toLowerCase()
+    .replace(/ł/g,'l').replace(/ą/g,'a').replace(/ć/g,'c').replace(/ę/g,'e')
+    .replace(/ń/g,'n').replace(/ó/g,'o').replace(/ś/g,'s').replace(/ż|ź/g,'z')
+    .replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+}
+
 // Zwraca N ostatnio dodanych zdjęć (ze wszystkich kategorii razem),
 // najnowsze pierwsze — do Galerii na stronie głównej.
 function getLatestPhotos(count) {
@@ -100,14 +110,16 @@ function getLatestPhotos(count) {
 
 // Zwraca listę obiektów z ustawionymi współrzędnymi (lat/lng) —
 // do pinezek na Mapie podróży na stronie głównej. Obiekty bez
-// współrzędnych są pomijane.
+// współrzędnych są pomijane. Link prowadzi od razu do konkretnej
+// miejscowości (nie tylko do listy województw danej kategorii).
 function getMapPoints() {
   return PLACES.filter(p => typeof p.lat === "number" && typeof p.lng === "number").map(p => ({
     lat: p.lat,
     lng: p.lng,
     name: p.name,
     town: p.town,
+    category: p.category,
     categoryLabel: CATEGORY_LABELS[p.category] || "",
-    categoryUrl: `${p.category}.html`
+    categoryUrl: `${p.category}.html#${slugify(p.voivodeship)}--${slugify(p.town)}`
   }));
 }
