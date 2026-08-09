@@ -332,25 +332,26 @@
     background:rgba(8,7,5,.94);
     z-index:200;
     display:none;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
+    gap:18px;
     padding:40px 20px;
   }
   .lightbox.open{ display:flex; }
   .lightbox img{
     width:min(1100px, 92vw);
-    height:82vh;
+    height:74vh;
     object-fit:contain;
     box-shadow:0 30px 80px rgba(0,0,0,.5);
   }
   .lightbox .lb-cap{
-    position:absolute;
-    bottom:30px; left:0; right:0;
     text-align:center;
     color:var(--cream-light);
     font-family:'Cormorant Garamond', serif;
     font-style:italic;
     font-size:1.15rem;
+    max-width:92vw;
   }
   .lb-close, .lb-prev, .lb-next{
     position:absolute;
