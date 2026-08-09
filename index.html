@@ -272,10 +272,13 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') prevImage();
 });
 
-// Kliknięcie w zdjęcie zamku w karcie "Zamki" też otwiera galerię
+// Kliknięcie w zdjęcie na karcie komnaty przenosi do tej kategorii
+// (tak samo jak link "Wejdź do komnaty" w tej samej karcie).
 document.querySelectorAll('.room-card .panel.photo').forEach(panel => {
+  const link = panel.closest('.room-card').querySelector('.enter-link');
+  if (!link) return;
   panel.style.cursor = 'pointer';
-  panel.addEventListener('click', () => openLightbox(0));
+  panel.addEventListener('click', () => { window.location.href = link.href; });
 });
 </script>
 
