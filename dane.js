@@ -51,7 +51,9 @@ const PLACES = [
   { category: "palace", voivodeship: "Wielkopolskie", town: "Dobrzyca", name: "Muzeum Ziemiaństwa, park, kawiarnia, hotelik",
   thumb: "images/palace-smilow-thumb.jpg", full: "images/palace-smilow.jpg" },
   { category: "palace", voivodeship: "Wielkopolskie", town: "Śmiełów", name: "Muzeum Adama Mickiewicza, park",
-  thumb: "images/palace-smielow-thumb.jpg", full: "images/palace-smielow.jpg" }
+  thumb: "images/palace-smielow-thumb.jpg", full: "images/palace-smielow.jpg" },
+  { category: "atrakcje", voivodeship: "Świętokrzyskie", town: "Podzamcze", name: "Centrum Nauki Leonardo da Vinci",
+  thumb: "images/atrakcje-podzamcze-thumb.jpg", full: "images/atrakcje-podzamcze.jpg" }
 
   // Kolejne wpisy dopisuj poniżej, np.:
   // { category: "palace", voivodeship: "Mazowieckie", town: "Nieborów", name: "Pałac w Nieborowie",
