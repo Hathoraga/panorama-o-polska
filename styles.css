@@ -710,14 +710,16 @@
   font-weight:700;
   letter-spacing:.03em;
   font-size:.95rem;
-  color:#c9bd93;
-  border:1px solid rgba(200,163,90,.35);
+  color:#e4d9b8;
+  background:rgba(200,163,90,.12);
+  border:1px solid rgba(200,163,90,.45);
   padding:8px 16px;
   border-radius:20px;
   white-space:nowrap;
   transition:.2s ease;
 }
 .quick-tabs a:hover{
+  background:rgba(200,163,90,.22);
   border-color:var(--gold-bright);
   color:var(--gold-bright);
 }
