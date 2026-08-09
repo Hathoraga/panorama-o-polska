@@ -193,6 +193,7 @@ let photoItems = []; // aktualna lista zdjęć do lightboxa
 
 function showObject(castle){
   photoItems = castle.photos;
+  currentCaption = `${castle.name} — ${castle.town} · Zamki`;
 
   objectEyebrow.textContent = currentVoivodeship;
   objectTitle.textContent = castle.town;
@@ -233,6 +234,7 @@ const lightbox = document.getElementById('lightbox');
 const lbImg = document.getElementById('lbImg');
 const lbCap = document.getElementById('lbCap');
 let currentIndex = 0;
+let currentCaption = '';
 
 function openLightbox(index){
   currentIndex = index;
@@ -242,8 +244,8 @@ function openLightbox(index){
 function showImage(){
   const item = photoItems[currentIndex];
   lbImg.src = item.full;
-  lbImg.alt = objectTitle.textContent;
-  lbCap.textContent = objectTitle.textContent;
+  lbImg.alt = currentCaption;
+  lbCap.textContent = currentCaption;
 }
 function closeLightbox(){ lightbox.classList.remove('open'); }
 function nextImage(){ currentIndex = (currentIndex + 1) % photoItems.length; showImage(); }

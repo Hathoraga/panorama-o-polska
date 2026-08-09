@@ -195,7 +195,7 @@ function showImage(){
   const item = photoItems[currentIndex];
   lbImg.src = item.photos[0].full;
   lbImg.alt = item.name;
-  lbCap.textContent = `${item.name} — ${item.town}`;
+  lbCap.textContent = `${item.name} — ${item.town} · Twierdze i podziemia`;
 }
 function closeLightbox(){ lightbox.classList.remove('open'); }
 function nextImage(){ currentIndex = (currentIndex + 1) % photoItems.length; showImage(); }
