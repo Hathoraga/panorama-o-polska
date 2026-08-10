@@ -1,7 +1,7 @@
 :root{
     --ink:#1c1a14;
-    --forest:#122117;
-    --forest-deep:#0c1811;
+    --forest:#1f3d29;
+    --forest-deep:#152a1c;
     --cream:#efe4c8;
     --cream-light:#faf4e4;
     --gold:#c8a35a;
@@ -104,7 +104,7 @@
 
   /* ===== HERO ===== */
   .hero{
-    background:radial-gradient(120% 90% at 50% 0%, #1a2e1f 0%, var(--forest) 45%, var(--forest-deep) 100%);
+    background:radial-gradient(120% 90% at 50% 0%, #2b5238 0%, var(--forest) 45%, var(--forest-deep) 100%);
     color:var(--cream-light);
     padding:64px 28px 44px;
     text-align:center;
