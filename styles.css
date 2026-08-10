@@ -123,9 +123,9 @@
   }
   .hero h1{
     font-size:clamp(2.6rem, 6vw, 4.4rem);
-    line-height:1.08;
+    line-height:1.12;
     color:var(--cream-light);
-    max-width:22ch;
+    max-width:32ch;
     margin:0 auto 26px;
     position:relative;
   }
@@ -183,7 +183,7 @@
 
   /* ===== ROOM CARDS ===== */
   .rooms{
-    max-width:760px;
+    max-width:860px;
     margin:0 auto;
     padding:30px 24px 60px;
     display:flex;
@@ -207,6 +207,13 @@
   .room-card .panel.photo{
     background-size:cover;
     background-position:center 65%;
+  }
+  .room-card .panel.photo img{
+    position:absolute;
+    inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center 65%;
   }
   .room-card .panel.photo::after{
     content:"";
@@ -522,7 +529,7 @@
     text-align:center;
   }
   .voivo-grid{
-    max-width:1080px;
+    max-width:1400px;
     margin:0 auto;
     padding:26px 20px 60px;
     display:grid;
@@ -593,6 +600,9 @@
   }
   @media (min-width:1000px){
     .voivo-grid{ grid-template-columns:repeat(3, 1fr); }
+  }
+  @media (min-width:1300px){
+    .voivo-grid{ grid-template-columns:repeat(4, 1fr); }
   }
 
   @media (max-width: 560px){

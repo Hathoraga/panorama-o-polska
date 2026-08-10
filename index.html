@@ -3,12 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ministerstwo Podróży — Panorama O! Polska</title>
+<title>Ministerstwo Podróży — Zamki, pałace i atrakcje w Polsce | Panorama O! Polska</title>
+<meta name="description" content="Zamki, pałace, twierdze i atrakcje w Polsce — interaktywna mapa, galeria zdjęć i podział na województwa. Poznaj historię zapisaną w kamieniu.">
+<link rel="canonical" href="https://hathoraga.github.io/panorama-o-polska/index.html">
+<link rel="icon" href="images/logo.jpg" type="image/jpeg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ministerstwo Podróży — Zamki, pałace i atrakcje w Polsce | Panorama O! Polska">
+<meta property="og:description" content="Zamki, pałace, twierdze i atrakcje w Polsce — interaktywna mapa, galeria zdjęć i podział na województwa. Poznaj historię zapisaną w kamieniu.">
+<meta property="og:url" content="https://hathoraga.github.io/panorama-o-polska/index.html">
+<meta property="og:image" content="https://hathoraga.github.io/panorama-o-polska/images/logo.jpg">
+<meta property="og:locale" content="pl_PL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ministerstwo Podróży — Zamki, pałace i atrakcje w Polsce | Panorama O! Polska">
+<meta name="twitter:description" content="Zamki, pałace, twierdze i atrakcje w Polsce — interaktywna mapa, galeria zdjęć i podział na województwa. Poznaj historię zapisaną w kamieniu.">
+<meta name="twitter:image" content="https://hathoraga.github.io/panorama-o-polska/images/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Panorama O! Polska — Ministerstwo Podróży",
+  "url": "https://hathoraga.github.io/panorama-o-polska/index.html",
+  "description": "Zamki, pałace, twierdze i atrakcje w Polsce — interaktywna mapa, galeria zdjęć i podział na województwa.",
+  "inLanguage": "pl"
+}
+</script>
 </head>
 <body data-page="index">
 
@@ -47,7 +70,7 @@
 <div class="panel-overlay" id="panelOverlay"></div>
 
 <section class="hero">
-  <h1>Za bramą czeka<br>przygoda</h1>
+  <h1>Za bramą czeka przygoda</h1>
   <p>Zamki, pałace i miejsca, które warto odwiedzić choć raz w życiu.</p>
   <a class="cta-outline" href="#komnaty">Rozpocznij zwiedzanie</a>
   <div class="search-box hero-search">
@@ -65,8 +88,7 @@
 <section class="rooms" id="komnaty">
 
   <article class="room-card">
-    <div class="panel photo" style="background-image:url('images/zamek-lancut-thumb.jpg');">
-    </div>
+    <div class="panel photo"><img src="images/zamek-lancut-thumb.jpg" alt="Zamek w Łańcucie — zamki w Polsce" loading="lazy"></div>
     <div class="room-body">
       <h3>Zamki</h3>
       <p>Warowne mury, baszty i fosy — twierdze, które broniły granic i rodów.</p>
@@ -75,7 +97,7 @@
   </article>
 
   <article class="room-card">
-    <div class="panel photo" style="background-image:url('images/palace-smielow-thumb.jpg');"></div>
+    <div class="panel photo"><img src="images/palace-smielow-thumb.jpg" alt="Pałac w Śmiełowie — pałace i dwory w Polsce" loading="lazy"></div>
     <div class="room-body">
       <h3>Pałace i dwory</h3>
       <p>Rezydencje magnackie i szlacheckie, złocone salony i rodowe portrety.</p>
@@ -84,7 +106,7 @@
   </article>
 
   <article class="room-card">
-    <div class="panel photo" style="background-image:url('images/twierdze-krakow-thumb.jpg');"></div>
+    <div class="panel photo"><img src="images/twierdze-krakow-thumb.jpg" alt="Kopiec Kościuszki w Krakowie — twierdze i podziemia w Polsce" loading="lazy"></div>
     <div class="room-body">
       <h3>Twierdze i podziemia</h3>
       <p>Bastiony, kazamaty i systemy fortyfikacji ukryte pod ziemią.</p>
@@ -93,7 +115,7 @@
   </article>
 
   <article class="room-card">
-    <div class="panel photo" style="background-image:url('images/atrakcje-podzamcze-thumb.jpg');"></div>
+    <div class="panel photo"><img src="images/atrakcje-podzamcze-thumb.jpg" alt="Centrum Nauki Leonardo Da Vinci w Podzamczu — atrakcje w Polsce" loading="lazy"></div>
     <div class="room-body">
       <h3>Atrakcje</h3>
       <p>Niesamowite zakątki, muzea i wydarzenia — to, czego nie można przegapić.</p>
@@ -102,11 +124,33 @@
   </article>
 
   <article class="room-card">
-    <div class="panel photo" style="background-image:url('images/wiesci-thumb.jpg');"></div>
+    <div class="panel photo"><img src="images/wiesci-thumb.jpg" alt="Zamkowe wieści — nowości ze świata polskich rezydencji" loading="lazy"></div>
     <div class="room-body">
       <h3>Zamkowe wieści</h3>
       <p>Artykuły, zapowiedzi wydarzeń i wiadomości ze świata polskich rezydencji.</p>
       <a class="enter-link" href="wiesci.html">Wejdź do komnaty →</a>
+    </div>
+  </article>
+
+  <article class="room-card">
+    <div class="panel">
+      <svg viewBox="0 0 100 100"><g fill="#c8a35a"><rect x="12" y="16" width="30" height="30"/><rect x="46" y="16" width="42" height="30"/><rect x="12" y="50" width="42" height="34"/><rect x="58" y="50" width="30" height="34"/></g></svg>
+    </div>
+    <div class="room-body">
+      <h3>Galeria zdjęć</h3>
+      <p>Wszystkie najnowsze zdjęcia ze wszystkich komnat, zebrane w jednym miejscu.</p>
+      <a class="enter-link" href="#galeria">Zobacz galerię →</a>
+    </div>
+  </article>
+
+  <article class="room-card">
+    <div class="panel">
+      <svg viewBox="0 0 100 100"><g fill="none" stroke="#c8a35a" stroke-width="4"><path d="M50 12 C34 12 22 24 22 40 C22 60 50 88 50 88 C50 88 78 60 78 40 C78 24 66 12 50 12 Z"/><circle cx="50" cy="40" r="10"/></g></svg>
+    </div>
+    <div class="room-body">
+      <h3>Mapa podróży</h3>
+      <p>Wszystkie dodane miejsca zaznaczone na jednej, interaktywnej mapie Polski.</p>
+      <a class="enter-link" href="#mapa-podrozy">Zobacz mapę →</a>
     </div>
   </article>
 
@@ -120,7 +164,7 @@
   <div class="gallery-grid" id="galleryGrid"></div>
 </section>
 
-<section class="live-map-section">
+<section class="live-map-section" id="mapa-podrozy">
   <div class="eyebrow">Plan majątku</div>
   <h2>Mapa podróży</h2>
   <p>Wszystkie dodane miejsca, zaznaczone tam, gdzie naprawdę leżą — dotknij pinezki, aby zobaczyć szczegóły.</p>
