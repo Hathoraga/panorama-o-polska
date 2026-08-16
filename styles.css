@@ -705,15 +705,23 @@
 /* ===== PASEK ZAKŁADEK (widoczny od razu, pod nagłówkiem) ===== */
 .quick-tabs{
   display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
   gap:10px;
-  overflow-x:auto;
   padding:14px 20px;
   background:var(--forest-deep);
   border-bottom:1px solid rgba(200,163,90,.2);
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
 }
-.quick-tabs::-webkit-scrollbar{ display:none; }
+@media (max-width:640px){
+  .quick-tabs{
+    flex-wrap:nowrap;
+    justify-content:flex-start;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .quick-tabs::-webkit-scrollbar{ display:none; }
+}
 .quick-tabs a{
   flex:0 0 auto;
   font-family:'Inter', sans-serif;
